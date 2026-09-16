@@ -1,0 +1,133 @@
+---
+title: "Laporan Praktikum Statistik Teknik"
+subtitle: "Analisis Data Rekayasa, Uji Hipotesis, dan Pengendalian Mutu Industri"
+author: "Nama Mahasiswa: [Isi Nama Anda] | NIM: [Isi NIM Anda]"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    theme: cosmo
+    highlight: tango
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+# Memuat script fungsi yang telah dikerjakan
+source("tugas_mahasiswa.R")
+```
+
+# 1. Pendahuluan
+
+Praktikum ini bertujuan untuk menerapkan metode statistika dalam bidang rekayasa dan industri, meliputi:
+1. **Statistika Deskriptif & Deteksi Pencilan** pada mutu kuat tekan beton.
+2. **Uji Hipotesis Standar Mutu** material struktural.
+3. **Pemodelan Regresi & Korelasi** suhu operasi terhadap getaran mesin industri.
+4. **Analisis Kapabilitas Proses (Statistical Quality Control)**.
+
+---
+
+# 2. Dataset Praktikum
+
+## 2.1 Pengujian Kuat Tekan Beton Silinder
+```{r load_beton}
+data_beton <- read.csv("data/uji_beton.csv")
+head(data_beton)
+summary(data_beton$kuat_tekan_mpa)
+```
+
+## 2.2 Pengujian Suhu dan Getaran Turbin
+```{r load_mesin}
+data_mesin <- read.csv("data/suhu_getaran_mesin.csv")
+head(data_mesin)
+```
+
+---
+
+# 3. Analisis dan Pembahasan
+
+## 3.1 Soal 1: Statistik Deskriptif & Deteksi Outlier
+```{r analisis_soal1}
+hasil_deskriptif <- hitung_statistik_deskriptif(data_beton$kuat_tekan_mpa)
+print(hasil_deskriptif)
+
+# Visualisasi Boxplot & Deteksi Outlier
+boxplot(data_beton$kuat_tekan_mpa, 
+        main = "Boxplot Kuat Tekan Beton (MPa)",
+        ylab = "Kuat Tekan (MPa)",
+        col = "#4A90E2",
+        border = "#1B365D")
+grid()
+```
+
+*Interpretasi Hasil:*
+*(Tuliskan analisis Anda mengenai rata-rata, sebaran data, dan apakah terdapat nilai pencilan/outlier)*
+
+---
+
+## 3.2 Soal 2: Uji Hipotesis Kekuatan Material
+Standar spesifikasi teknis mensyaratkan kekuatan rata-rata beton minimal $\mu = 30$ MPa.
+```{r analisis_soal2}
+hasil_uji_t <- uji_standar_kekuatan(data_beton$kuat_tekan_mpa, mu_standar = 30, alpha = 0.05)
+print(hasil_uji_t)
+```
+
+*Interpretasi Hasil:*
+*(Jelaskan apakah batch beton ini memenuhi spesifikasi mutu berdasarkan nilai p-value dan t-stat)*
+
+---
+
+## 3.3 Soal 3: Korelasi & Regresi Linier Suhu vs Getaran
+```{r analisis_soal3}
+hasil_regresi <- analisis_regresi_linier(data_mesin$suhu_operasi_c, data_mesin$getaran_rms)
+print(hasil_regresi[c("r", "r_squared", "intercept", "slope")])
+
+# Scatter plot dan Garis Regresi
+plot(data_mesin$suhu_operasi_c, data_mesin$getaran_rms,
+     main = "Hubungan Suhu Operasi terhadap Getaran Mesin",
+     xlab = "Suhu Operasi (°C)",
+     ylab = "Getaran RMS (mm/s)",
+     pch = 19, col = "#D9534F")
+abline(a = hasil_regresi$intercept, b = hasil_regresi$slope, col = "#2E6DA4", lwd = 2)
+grid()
+
+# Contoh Prediksi Getaran pada Suhu 85°C dan 110°C
+if (is.function(hasil_regresi$prediksi)) {
+  prediksi_suhu <- hasil_regresi$prediksi(c(85, 110))
+  cat("Prediksi Getaran pada 85°C dan 110°C:\n")
+  print(prediksi_suhu)
+}
+```
+
+*Interpretasi Hasil:*
+*(Jelaskan kekuatan hubungan antara kenaikan suhu terhadap kenaikan getaran mesin dan persamaan matematis regresinya)*
+
+---
+
+## 3.4 Soal 4: Kapabilitas Proses Pengendalian Mutu
+Batas spesifikasi: USL = 40 MPa, LSL = 24 MPa.
+```{r analisis_soal4}
+hasil_kapabilitas <- analisis_kapabilitas_proses(data_beton$kuat_tekan_mpa, usl = 40, lsl = 24)
+print(hasil_kapabilitas)
+
+# Histogram Distribusi Normal
+hist(data_beton$kuat_tekan_mpa, 
+     probability = TRUE, 
+     main = "Distribusi Kuat Tekan Beton vs Batas Spesifikasi",
+     xlab = "Kuat Tekan (MPa)", 
+     col = "#E8F4F8", border = "#31708F")
+lines(density(data_beton$kuat_tekan_mpa), col = "#D9534F", lwd = 2)
+abline(v = c(24, 40), col = "red", lty = 2, lwd = 2)
+legend("topright", legend = c("Densitas Data", "Batas USL / LSL"), 
+       col = c("#D9534F", "red"), lty = c(1, 2), lwd = 2)
+```
+
+*Interpretasi Hasil:*
+*(Jelaskan apakah proses produksi beton telah kapabel berdasarkan nilai Cp dan Cpk, serta kenormalan data)*
+
+---
+
+# 4. Kesimpulan Rekayasa
+
+*(Tuliskan rangkuman dan rekomendasi teknis berdasarkan hasil pengolahan data statistik di atas)*

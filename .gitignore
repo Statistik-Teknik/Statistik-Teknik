@@ -1,0 +1,24 @@
+# History & Environment R
+.Rhistory
+.RData
+.Ruserdata
+.Renviron
+
+# RStudio files
+.Rproj.user/
+*.Rproj
+
+# Knitr & R Markdown outputs
+*.html
+*.pdf
+*.docx
+*_cache/
+*_files/
+
+# macOS / Linux / Windows system files
+.DS_Store
+Thumbs.db
+*~
+
+# Kunci jawaban dosen (opsional jika dosen ingin mengecualikan folder solusi sebelum dibagikan ke mahasiswa)
+# solusi/

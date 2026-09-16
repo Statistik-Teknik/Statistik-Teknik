@@ -1,0 +1,44 @@
+{
+  "tests": [
+    {
+      "name": "Test Soal 1 - Statistik Deskriptif",
+      "setup": "",
+      "run": "Rscript -e 'testthat::test_file(\"tests/test_soal1.R\")'",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 25
+    },
+    {
+      "name": "Test Soal 2 - Uji Hipotesis t-Test",
+      "setup": "",
+      "run": "Rscript -e 'testthat::test_file(\"tests/test_soal2.R\")'",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 25
+    },
+    {
+      "name": "Test Soal 3 - Korelasi dan Regresi Linier",
+      "setup": "",
+      "run": "Rscript -e 'testthat::test_file(\"tests/test_soal3.R\")'",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 25
+    },
+    {
+      "name": "Test Soal 4 - Analisis Kapabilitas Proses",
+      "setup": "",
+      "run": "Rscript -e 'testthat::test_file(\"tests/test_soal4.R\")'",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 5,
+      "points": 25
+    }
+  ]
+}
