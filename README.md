@@ -1,6 +1,12 @@
 # Praktikum Statistik Teknik: Analisis Data Rekayasa & Pengendalian Mutu
 
+[![Web E-Book Interaktif](https://img.shields.io/badge/Web_E--Book-Statistik_Teknik_dengan_R-0B3C5D?style=for-the-badge&logo=r&logoColor=white)](https://statistik-teknik.github.io/Statistik-Teknik/)
+[![Slide PPTX Kuliah](https://img.shields.io/badge/Slide_Deck-15_Bab_Presentasi-1C7293?style=for-the-badge&logo=microsoftpowerpoint&logoColor=white)](https://statistik-teknik.github.io/Statistik-Teknik/)
 [![GitHub Classroom Autograding](../../actions/workflows/classroom.yml/badge.svg)](../../actions/workflows/classroom.yml)
+
+> 📖 **Web E-Book & Slide Presentasi Kuliah Daring**:  
+> Seluruh modul buku ajar 15 Bab, kode R, output simulasi, dan slide presentasi perkuliahan dapat diakses interaktif di:  
+> 🌐 **[https://statistik-teknik.github.io/Statistik-Teknik/](https://statistik-teknik.github.io/Statistik-Teknik/)**
 
 Selamat datang di repositori tugas praktikum mata kuliah **Statistik Teknik** (*Engineering Statistics*). Praktikum ini dirancang untuk melatih pemahaman konsep statistika terapan di bidang rekayasa dan manufaktur menggunakan bahasa pemrograman **R**.
 

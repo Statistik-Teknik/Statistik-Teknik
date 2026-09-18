@@ -14,12 +14,10 @@
 Repositori [https://github.com/Statistik-Teknik/Statistik-Teknik](https://github.com/Statistik-Teknik/Statistik-Teknik) telah berhasil diinisialisasi dan diaktifkan fiturnya sebagai **Template Repository** (`is_template: true`).
 
 ### Alur untuk Dosen / Asisten:
-1. **Bagikan tautan repositori template kepada mahasiswa:**
-   ```text
-   https://github.com/Statistik-Teknik/Statistik-Teknik
-   ```
-2. Minta mahasiswa mengklik tombol hijau **`Use this template`** > **`Create a new repository`**.
-3. Buat slot pengumpulan link tugas di LMS kampus (Moodle, Google Classroom, Teams, atau Google Form).
+1. Pastikan repositori ini diatur sebagai **Template Repository** di menu Settings GitHub (`[✓] Template repository`).
+2. Minta mahasiswa mengakses materi dan modul praktikum di Web E-Book: [https://statistik-teknik.github.io/Statistik-Teknik/](https://statistik-teknik.github.io/Statistik-Teknik/).
+3. Minta mahasiswa mengklik tombol hijau **`Use this template`** > **`Create a new repository`**.
+4. Buat slot pengumpulan link tugas di LMS kampus (Moodle, Google Classroom, Teams, atau Google Form).
 
 ### Alur untuk Mahasiswa:
 1. Buka [https://github.com/Statistik-Teknik/Statistik-Teknik](https://github.com/Statistik-Teknik/Statistik-Teknik).
